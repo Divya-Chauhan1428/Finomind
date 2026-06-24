@@ -1,0 +1,294 @@
+/* ═══════════════════════════════════════════════════════════
+   FinoMind — Services Page (services.css)
+   Premium service cards with hover effects and CTA
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Services Hero ── */
+.services-hero {
+  padding: calc(72px + var(--space-7)) 0 var(--space-6);
+  text-align: center;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 30%, rgba(0, 174, 239, 0.08), transparent),
+    radial-gradient(circle at 80% 80%, rgba(0, 123, 158, 0.06), transparent 50%);
+  pointer-events: none;
+}
+
+.services-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.services-hero .section-title {
+  font-size: clamp(32px, 5vw, 48px);
+  margin-bottom: 16px;
+}
+
+.services-hero .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+}
+
+/* ── Services Grid ── */
+.services-section {
+  padding: 0 0 var(--space-7);
+  background: var(--navy);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ── Service Card ── */
+.service-card {
+  background: rgba(15, 31, 56, 0.5);
+  border: 1px solid rgba(0, 174, 239, 0.1);
+  border-radius: 18px;
+  padding: 40px 32px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--teal));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 174, 239, 0.06), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+  pointer-events: none;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 174, 239, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 174, 239, 0.12);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+/* Card content needs z-index above the ::after */
+.service-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(0, 174, 239, 0.1);
+  border: 1px solid rgba(0, 174, 239, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all var(--duration-fast) ease;
+}
+
+.service-card:hover .service-icon {
+  background: rgba(0, 174, 239, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 174, 239, 0.15);
+}
+
+.service-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--cyan);
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.service-card .service-desc {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* ── Bullet Points ── */
+.service-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.service-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.service-feature-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: rgba(0, 174, 239, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.service-feature-check svg {
+  width: 12px;
+  height: 12px;
+  color: var(--cyan);
+}
+
+/* ── Services CTA Section ── */
+.services-cta {
+  padding: var(--space-6) 0 var(--space-7);
+  background: var(--navy);
+}
+
+.services-cta-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+.services-cta-card {
+  background: linear-gradient(135deg, var(--dark-teal) 0%, var(--teal) 60%, var(--cyan) 100%);
+  border-radius: var(--radius-modal);
+  padding: 64px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-cta-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='1' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.services-cta-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.services-cta-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 38px);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.services-cta-card p {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+
+.services-cta-card .btn-primary {
+  background: var(--white);
+  color: var(--dark-teal);
+  font-size: 16px;
+  padding: 16px 36px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.services-cta-card .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.services-cta-trust {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.services-cta-trust span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.services-cta-trust svg {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 968px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    padding: 32px 24px;
+  }
+
+  .services-cta-card {
+    padding: 40px 24px;
+  }
+
+  .services-cta-trust {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+}

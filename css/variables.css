@@ -1,0 +1,78 @@
+/* ═══════════════════════════════════════════════════════════
+   FinoMind — Design Tokens (variables.css)
+   Brand-compliant CSS custom properties
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Primary Colors ── */
+  --cyan:         #00AEEF;
+  --cyan-hover:   #00c4ff;
+  --cyan-glow:    rgba(0, 174, 239, 0.35);
+  --teal:         #007B9E;
+  --dark-teal:    #1A5276;
+
+  /* ── Mockup-specific dark navy ── */
+  --navy:         #0a1628;
+  --navy-light:   #0f1f38;
+  --navy-card:    rgba(15, 31, 56, 0.65);
+
+  /* ── Neutrals ── */
+  --charcoal:     #2C3E50;
+  --slate:        #4A6274;
+  --gray:         #6B7E8D;
+  --light-cyan:   #E0F7FC;
+  --off-white:    #F7FAFB;
+  --white:        #FFFFFF;
+  --border:       #D6E8EE;
+
+  /* ── Glass Morphism ── */
+  --glass-bg:     rgba(13, 27, 52, 0.55);
+  --glass-border: rgba(0, 174, 239, 0.18);
+  --glass-blur:   16px;
+
+  /* ── Typography ── */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ── Spacing Scale ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  16px;
+  --space-4:  24px;
+  --space-5:  40px;
+  --space-6:  72px;
+  --space-7:  100px;
+
+  /* ── Border Radii ── */
+  --radius-chip:   4px;
+  --radius-btn:    8px;
+  --radius-card:   14px;
+  --radius-modal:  24px;
+  --radius-pill:   999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md:   0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg:   0 8px 40px rgba(0, 0, 0, 0.18);
+  --shadow-glow: 0 0 30px rgba(0, 174, 239, 0.15);
+
+  /* ── Transitions ── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast:   0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow:   0.6s;
+
+  /* ── Container ── */
+  --container-max: 1280px;
+  --container-pad: 40px;
+}
+
+/* ── Responsive overrides ── */
+@media (max-width: 768px) {
+  :root {
+    --container-pad: 20px;
+    --space-6: 48px;
+    --space-7: 64px;
+  }
+}

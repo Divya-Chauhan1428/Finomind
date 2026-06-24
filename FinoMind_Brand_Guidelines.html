@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FinoMind — Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cyan:       #00AEEF;
+    --teal:       #007B9E;
+    --dark-teal:  #1A5276;
+    --slate:      #4A6274;
+    --light-cyan: #E0F7FC;
+    --off-white:  #F7FAFB;
+    --white:      #FFFFFF;
+    --charcoal:   #2C3E50;
+    --gray:       #6B7E8D;
+    --border:     #D6E8EE;
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body:    'Inter', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  /* ───── NAV ───── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--dark-teal);
+    display: flex; align-items: center; gap: 0;
+    padding: 0 40px;
+    height: 56px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  }
+  nav .logo-mark {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--cyan);
+    letter-spacing: .04em;
+    margin-right: 36px;
+    white-space: nowrap;
+  }
+  nav .logo-mark span { color: var(--white); }
+  nav a {
+    color: rgba(255,255,255,.72);
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: .03em;
+    padding: 0 14px;
+    height: 56px;
+    display: flex; align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+    white-space: nowrap;
+  }
+  nav a:hover { color: #fff; border-bottom-color: var(--cyan); }
+
+  /* ───── HERO ───── */
+  .hero {
+    background: linear-gradient(135deg, var(--dark-teal) 0%, var(--teal) 55%, var(--cyan) 100%);
+    padding: 100px 60px 90px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='%23ffffff' fill-opacity='0.07'/%3E%3C/svg%3E") repeat;
+  }
+  .hero-inner { position: relative; max-width: 860px; }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    color: rgba(255,255,255,.9);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,.2);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 6vw, 72px);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--cyan);
+    filter: brightness(1.3);
+  }
+  .hero p {
+    font-size: 17px;
+    color: rgba(255,255,255,.82);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    margin-top: 36px;
+    display: flex; gap: 32px;
+    font-size: 12px; color: rgba(255,255,255,.55);
+    letter-spacing: .04em;
+  }
+  .hero-meta span strong { color: rgba(255,255,255,.85); display: block; font-size: 13px; margin-bottom: 2px; }
+
+  /* ───── LAYOUT ───── */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+  section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.5vw, 38px);
+    color: var(--dark-teal);
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .section-desc {
+    font-size: 15.5px;
+    color: var(--slate);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  /* ───── COLOR SWATCHES ───── */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+  .swatch {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    background: var(--white);
+  }
+  .swatch-color {
+    height: 110px;
+    position: relative;
+  }
+  .swatch-color .copy-btn {
+    position: absolute; bottom: 8px; right: 8px;
+    background: rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.35);
+    color: #fff; font-size: 10px; font-weight: 600;
+    padding: 3px 8px; border-radius: 6px;
+    cursor: pointer; letter-spacing: .04em;
+    backdrop-filter: blur(4px);
+    transition: background .2s;
+  }
+  .swatch-color .copy-btn:hover { background: rgba(255,255,255,.4); }
+  .swatch-info { padding: 14px 16px; }
+  .swatch-name { font-weight: 700; font-size: 13px; color: var(--charcoal); margin-bottom: 4px; }
+  .swatch-hex  { font-size: 12px; color: var(--gray); font-family: 'Courier New', monospace; margin-bottom: 2px; }
+  .swatch-use  { font-size: 11px; color: var(--gray); line-height: 1.5; margin-top: 6px; }
+
+  /* ───── TYPOGRAPHY ───── */
+  .type-sample {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    display: flex; gap: 32px; align-items: flex-start;
+  }
+  .type-meta { min-width: 180px; }
+  .type-meta .label { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 6px; }
+  .type-meta .face-name { font-size: 14px; font-weight: 700; color: var(--charcoal); margin-bottom: 3px; }
+  .type-meta .specs { font-size: 12px; color: var(--gray); line-height: 1.8; }
+  .type-demo { flex: 1; }
+
+  .type-scale { margin-top: 40px; }
+  .scale-row {
+    display: flex; align-items: baseline; gap: 24px;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .scale-row:last-child { border-bottom: none; }
+  .scale-spec { min-width: 130px; font-size: 11px; color: var(--gray); font-family: 'Courier New', monospace; }
+
+  /* ───── LOGO ───── */
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .logo-box {
+    border-radius: 16px; padding: 48px 32px;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    border: 1px solid var(--border);
+  }
+  .logo-box.dark { background: var(--dark-teal); }
+  .logo-box.light { background: var(--white); }
+  .logo-box.mid  { background: var(--light-cyan); }
+  .logo-box.photo { background: linear-gradient(135deg, #0d3d54, #1a6b8a); }
+  .logo-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .logo-box.dark .logo-label, .logo-box.photo .logo-label { color: rgba(255,255,255,.55); }
+  .logo-box.light .logo-label, .logo-box.mid .logo-label { color: var(--gray); }
+
+  /* SVG logo inline */
+  .finomind-logo { font-family: var(--font-body); }
+
+  /* ───── SPACING ───── */
+  .spacing-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 8px rgba(0,0,0,.06);
+  }
+  .spacing-table th {
+    background: var(--dark-teal);
+    color: rgba(255,255,255,.85);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: 14px 20px; text-align: left;
+  }
+  .spacing-table td { padding: 14px 20px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .spacing-table tr:last-child td { border-bottom: none; }
+  .spacing-table tr:nth-child(even) td { background: var(--off-white); }
+  .spacer-bar { height: 10px; border-radius: 4px; background: var(--cyan); display: inline-block; }
+
+  /* ───── IMAGERY & ICONS ───── */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+  .do-box, .dont-box {
+    border-radius: 14px; padding: 24px;
+    border: 2px solid;
+  }
+  .do-box   { border-color: #27AE60; background: #F0FBF4; }
+  .dont-box { border-color: #E74C3C; background: #FDF2F2; }
+  .do-box   .badge { color: #27AE60; font-weight: 700; font-size: 12px; letter-spacing: .08em; margin-bottom: 10px; }
+  .dont-box .badge { color: #E74C3C; font-weight: 700; font-size: 12px; letter-spacing: .08em; margin-bottom: 10px; }
+  .do-box li, .dont-box li { font-size: 13.5px; margin-bottom: 6px; list-style: none; padding-left: 18px; position: relative; color: var(--charcoal); }
+  .do-box li::before   { content: '✓'; position: absolute; left: 0; color: #27AE60; font-weight: 700; }
+  .dont-box li::before { content: '✕'; position: absolute; left: 0; color: #E74C3C; font-weight: 700; }
+
+  /* ───── VOICE & TONE ───── */
+  .voice-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+  .voice-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .voice-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--cyan), var(--teal));
+  }
+  .voice-card .icon { font-size: 28px; margin-bottom: 12px; }
+  .voice-card h4 { font-size: 15px; font-weight: 700; color: var(--dark-teal); margin-bottom: 8px; }
+  .voice-card p  { font-size: 13px; color: var(--slate); line-height: 1.6; }
+  .voice-card .example { margin-top: 14px; font-size: 12px; background: var(--light-cyan); border-radius: 8px; padding: 10px 12px; color: var(--teal); font-style: italic; line-height: 1.5; }
+
+  /* ───── BUTTON / UI COMPONENTS ───── */
+  .component-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-bottom: 32px; }
+  .btn-primary {
+    background: var(--cyan); color: #fff;
+    border: none; border-radius: 8px;
+    padding: 12px 28px; font-size: 14px; font-weight: 600;
+    cursor: pointer; letter-spacing: .02em;
+    transition: background .2s, transform .15s;
+    font-family: var(--font-body);
+  }
+  .btn-primary:hover { background: var(--teal); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--teal);
+    border: 2px solid var(--teal); border-radius: 8px;
+    padding: 11px 26px; font-size: 14px; font-weight: 600;
+    cursor: pointer; letter-spacing: .02em;
+    transition: all .2s;
+    font-family: var(--font-body);
+  }
+  .btn-secondary:hover { background: var(--light-cyan); }
+  .btn-ghost {
+    background: transparent; color: var(--gray);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 11px 26px; font-size: 14px; font-weight: 500;
+    cursor: pointer; letter-spacing: .02em;
+    transition: all .2s;
+    font-family: var(--font-body);
+  }
+  .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* ───── BADGE / TAGS ───── */
+  .tag { display: inline-block; border-radius: 20px; padding: 4px 12px; font-size: 11.5px; font-weight: 600; }
+  .tag-cyan { background: var(--light-cyan); color: var(--teal); }
+  .tag-dark { background: var(--dark-teal); color: rgba(255,255,255,.85); }
+  .tag-amber { background: #FEF3CD; color: #92621A; }
+
+  /* ───── INPUT ───── */
+  .input-demo {
+    border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 11px 16px; font-size: 14px; color: var(--charcoal);
+    font-family: var(--font-body); outline: none; width: 240px;
+    transition: border-color .2s;
+  }
+  .input-demo:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,174,239,.12); }
+
+  /* ───── CARD ───── */
+  .card-demo {
+    background: var(--white); border-radius: 16px;
+    padding: 28px; border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0,0,0,.06);
+    max-width: 320px;
+  }
+  .card-demo .card-badge { margin-bottom: 14px; }
+  .card-demo h4 { font-size: 17px; font-weight: 700; color: var(--dark-teal); margin-bottom: 8px; }
+  .card-demo p  { font-size: 13px; color: var(--slate); line-height: 1.6; margin-bottom: 18px; }
+
+  /* ───── MISUSE ───── */
+  .misuse-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .misuse-item {
+    border-radius: 12px; padding: 20px;
+    border: 2px dashed #E74C3C;
+    background: #FDF2F2;
+    text-align: center;
+  }
+  .misuse-item .x { font-size: 22px; margin-bottom: 8px; }
+  .misuse-item p { font-size: 12px; color: #8B0000; font-weight: 600; }
+
+  /* ───── AUDIENCE ───── */
+  .audience-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .audience-card {
+    background: var(--white); border-radius: 14px;
+    padding: 24px; border: 1px solid var(--border);
+  }
+  .audience-card .flag { font-size: 32px; margin-bottom: 10px; }
+  .audience-card h4 { font-size: 14px; font-weight: 700; color: var(--dark-teal); margin-bottom: 8px; }
+  .audience-card p  { font-size: 13px; color: var(--slate); line-height: 1.6; }
+
+  /* ───── TOAST ───── */
+  .toast {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    background: var(--dark-teal); color: #fff;
+    padding: 12px 20px; border-radius: 10px; font-size: 13px; font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    transform: translateY(80px); opacity: 0;
+    transition: transform .3s, opacity .3s;
+    pointer-events: none;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ───── FOOTER ───── */
+  footer {
+    background: var(--dark-teal); color: rgba(255,255,255,.6);
+    padding: 36px 40px;
+    font-size: 13px; text-align: center;
+    line-height: 1.8;
+  }
+  footer strong { color: rgba(255,255,255,.9); }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; overflow-x: auto; }
+    .hero { padding: 64px 24px 56px; }
+    .container { padding: 0 20px; }
+    .logo-grid, .do-dont, .audience-grid { grid-template-columns: 1fr; }
+    .type-sample { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-mark">Fino<span>Mind</span></div>
+  <a href="#overview">Overview</a>
+  <a href="#colors">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#logo">Logo</a>
+  <a href="#components">Components</a>
+  <a href="#voice">Voice</a>
+  <a href="#imagery">Imagery</a>
+  <a href="#audience">Audience</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Brand Identity System</span>
+    <h1>FinoMind<br/><em>Brand Guidelines</em></h1>
+    <p>Everything you need to represent FinoMind consistently — from colour palettes and typefaces to voice, tone, and digital components. This is the single source of truth for all brand assets.</p>
+    <div class="hero-meta">
+      <span><strong>Version 1.0</strong>June 2025</span>
+      <span><strong>Prepared by</strong>Brand Team</span>
+      <span><strong>Tagline</strong>Smart Wealth, Clear Direction</span>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="container">
+    <div class="section-label">01 — Brand Foundation</div>
+    <h2 class="section-title">Who We Are</h2>
+    <p class="section-desc">FinoMind is a Germany-based financial consulting firm serving the Indian and South Asian diaspora in Europe. We bridge the gap between complex German financial systems and the people who need clear, trustworthy guidance to build their wealth in a new country.</p>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="flag">🌍</div>
+        <h4>Market</h4>
+        <p>Germany and wider Europe — home to the largest concentration of Indian professionals abroad, many navigating pensions, tax, and investment for the first time.</p>
+      </div>
+      <div class="audience-card">
+        <div class="flag">👤</div>
+        <h4>Primary Audience</h4>
+        <p>Indian nationals and South Asian diaspora aged 28–50 living in Germany — IT professionals, engineers, doctors, students transitioning to employment.</p>
+      </div>
+      <div class="audience-card">
+        <div class="flag">🎯</div>
+        <h4>Brand Promise</h4>
+        <p>We make German financial life understandable, approachable, and actionable — so every client feels confident, not confused, about their money.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:48px; background:var(--white); border-radius:16px; padding:36px; border:1px solid var(--border);">
+      <div class="section-label" style="margin-bottom:8px;">Brand Personality</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:16px; margin-top:20px;">
+        <div style="text-align:center; padding:20px 12px;">
+          <div style="font-size:32px;margin-bottom:8px;">🔭</div>
+          <div style="font-weight:700;font-size:14px;color:var(--dark-teal);">Clear</div>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px;">No jargon. Plain language that respects intelligence.</div>
+        </div>
+        <div style="text-align:center; padding:20px 12px;">
+          <div style="font-size:32px;margin-bottom:8px;">🤝</div>
+          <div style="font-weight:700;font-size:14px;color:var(--dark-teal);">Trustworthy</div>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px;">Grounded in regulated expertise, never pushy.</div>
+        </div>
+        <div style="text-align:center; padding:20px 12px;">
+          <div style="font-size:32px;margin-bottom:8px;">🌐</div>
+          <div style="font-weight:700;font-size:14px;color:var(--dark-teal);">Culturally Aware</div>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px;">Speaks to the lived experience of the diaspora.</div>
+        </div>
+        <div style="text-align:center; padding:20px 12px;">
+          <div style="font-size:32px;margin-bottom:8px;">📈</div>
+          <div style="font-weight:700;font-size:14px;color:var(--dark-teal);">Empowering</div>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px;">Builds financial confidence, not dependency.</div>
+        </div>
+        <div style="text-align:center; padding:20px 12px;">
+          <div style="font-size:32px;margin-bottom:8px;">🏛️</div>
+          <div style="font-weight:700;font-size:14px;color:var(--dark-teal);">Professional</div>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px;">European precision with a warm human touch.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLORS -->
+<section id="colors">
+  <div class="container">
+    <div class="section-label">02 — Colour Palette</div>
+    <h2 class="section-title">Brand Colours</h2>
+    <p class="section-desc">The palette is anchored in two blues — an energetic cyan for action and a deep teal for authority. Together they evoke both the clarity of water and the precision of finance. Click any hex code to copy it.</p>
+
+    <div style="margin-bottom:12px; font-size:13px; font-weight:700; color:var(--dark-teal); letter-spacing:.05em; text-transform:uppercase;">Primary Colours</div>
+    <div class="color-grid" style="margin-bottom:36px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#00AEEF;">
+          <button class="copy-btn" onclick="copyColor('#00AEEF')">#00AEEF</button>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fino Cyan</div>
+          <div class="swatch-hex">#00AEEF · RGB(0,174,239)</div>
+          <div class="swatch-use">Primary action colour. CTAs, links, highlights, illustrations.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#007B9E;">
+          <button class="copy-btn" onclick="copyColor('#007B9E')">#007B9E</button>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fino Teal</div>
+          <div class="swatch-hex">#007B9E · RGB(0,123,158)</div>
+          <div class="swatch-use">Secondary brand colour. Hover states, supporting graphics, accents.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1A5276;">
+          <button class="copy-btn" onclick="copyColor('#1A5276')">#1A5276</button>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Deep Authority</div>
+          <div class="swatch-hex">#1A5276 · RGB(26,82,118)</div>
+          <div class="swatch-use">Navigation, headers, dark backgrounds, high-trust elements.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:12px; font-size:13px; font-weight:700; color:var(--dark-teal); letter-spacing:.05em; text-transform:uppercase;">Supporting & Neutral Colours</div>
+    <div class="color-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4A6274;">
+          <button class="copy-btn" onclick="copyColor('#4A6274')">#4A6274</button>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Slate</div>
+          <div class="swatch-hex">#4A6274 · RGB(74,98,116)</div>
+          <div class="swatch-use">Body text, secondary copy, subheadings.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E0F7FC; border:1px solid #cce9ef;">
+          <button class="copy-btn" style="color:var(--teal); background:rgba(0,123,158,.1); border-color:rgba(0,123,158,.2);" onclick="copyColor('#E0F7FC')">#E0F7FC</button>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cloud Cyan</div>
+          <div class="swatch-hex">#E0F7FC · RGB(224,247,252)</div>
+          <div class="swatch-use">Light backgrounds, card tints, highlight washes.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F7FAFB; border:1px solid #e2eaed;">
+          <button class="copy-btn" style="color:var(--teal); background:rgba(0,123,158,.1); border-color:rgba(0,123,158,.2);" onclick="copyColor('#F7FAFB')">#F7FAFB</button>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Off-White</div>
+          <div class="swatch-hex">#F7FAFB · RGB(247,250,251)</div>
+          <div class="swatch-use">Page background, section alternates, input fills.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2C3E50;">
+          <button class="copy-btn" onclick="copyColor('#2C3E50')">#2C3E50</button>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Charcoal</div>
+          <div class="swatch-hex">#2C3E50 · RGB(44,62,80)</div>
+          <div class="swatch-use">Primary body text. Never use pure black (#000).</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; background:var(--white); border-radius:14px; padding:28px 32px; border:1px solid var(--border);">
+      <div style="font-weight:700; font-size:13px; color:var(--dark-teal); margin-bottom:16px;">Colour Ratios</div>
+      <div style="display:flex; height:20px; border-radius:8px; overflow:hidden; margin-bottom:12px;">
+        <div style="width:55%;background:#1A5276;" title="Deep Authority 55%"></div>
+        <div style="width:20%;background:#00AEEF;" title="Fino Cyan 20%"></div>
+        <div style="width:15%;background:#007B9E;" title="Fino Teal 15%"></div>
+        <div style="width:10%;background:#E0F7FC;" title="Cloud Cyan 10%"></div>
+      </div>
+      <div style="display:flex; gap:20px; flex-wrap:wrap; font-size:12px; color:var(--slate);">
+        <span><span style="display:inline-block;width:10px;height:10px;background:#1A5276;border-radius:2px;margin-right:5px;vertical-align:middle;"></span>Deep Authority — 55%</span>
+        <span><span style="display:inline-block;width:10px;height:10px;background:#00AEEF;border-radius:2px;margin-right:5px;vertical-align:middle;"></span>Fino Cyan — 20%</span>
+        <span><span style="display:inline-block;width:10px;height:10px;background:#007B9E;border-radius:2px;margin-right:5px;vertical-align:middle;"></span>Fino Teal — 15%</span>
+        <span><span style="display:inline-block;width:10px;height:10px;background:#E0F7FC;border:1px solid #cce9ef;border-radius:2px;margin-right:5px;vertical-align:middle;"></span>Cloud Cyan — 10%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section id="typography">
+  <div class="container">
+    <div class="section-label">03 — Typography</div>
+    <h2 class="section-title">Type System</h2>
+    <p class="section-desc">FinoMind uses two typefaces: Playfair Display for editorial moments of trust and gravitas, and Inter for all functional, interface, and body copy. This pairing respects both European clarity and the editorial warmth our audience expects.</p>
+
+    <div class="type-sample">
+      <div class="type-meta">
+        <div class="label">Display</div>
+        <div class="face-name">Playfair Display</div>
+        <div class="specs">Role: Headlines, pull-quotes, hero text<br/>Weights: 700 (Bold), 400 Italic<br/>Google Fonts: Free</div>
+      </div>
+      <div class="type-demo">
+        <div style="font-family:var(--font-display); font-size:42px; font-weight:700; color:var(--dark-teal); line-height:1.1; margin-bottom:10px;">Smart Wealth,<br/>Clear Direction.</div>
+        <div style="font-family:var(--font-display); font-size:22px; font-style:italic; color:var(--teal);">"Your future in Germany, financially secure."</div>
+      </div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-meta">
+        <div class="label">Interface & Body</div>
+        <div class="face-name">Inter</div>
+        <div class="specs">Role: Body, UI, captions, data<br/>Weights: 300 · 400 · 500 · 600 · 700 · 800<br/>Google Fonts: Free</div>
+      </div>
+      <div class="type-demo">
+        <div style="font-size:17px; font-weight:400; color:var(--charcoal); line-height:1.7; margin-bottom:12px;">Whether you're planning your first investment in Germany, understanding tax-advantaged pension schemes, or looking to send money home efficiently — FinoMind is your trusted guide.</div>
+        <div style="font-size:13px; font-weight:500; color:var(--gray);">INTER MEDIUM — CAPTIONS, LABELS, DATA TABLES</div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="background:var(--white); border-radius:16px; padding:32px; border:1px solid var(--border);">
+      <div style="font-weight:700; font-size:13px; color:var(--dark-teal); margin-bottom:8px; letter-spacing:.05em; text-transform:uppercase;">Type Scale</div>
+      <div class="scale-row">
+        <div class="scale-spec">Hero / 64px / 700</div>
+        <div style="font-family:var(--font-display); font-size:clamp(36px,5vw,64px); font-weight:700; color:var(--dark-teal); line-height:1;">Grow your wealth.</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-spec">H1 / 38px / 700</div>
+        <div style="font-family:var(--font-display); font-size:clamp(26px,3vw,38px); font-weight:700; color:var(--dark-teal);">Financial clarity for expats.</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-spec">H2 / 26px / 700</div>
+        <div style="font-size:26px; font-weight:700; color:var(--dark-teal);">Why FinoMind?</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-spec">H3 / 20px / 600</div>
+        <div style="font-size:20px; font-weight:600; color:var(--charcoal);">Pension & Retirement Planning</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-spec">Body / 16px / 400</div>
+        <div style="font-size:16px; font-weight:400; color:var(--charcoal); max-width:480px;">We help Indians living in Germany navigate pension schemes, tax filing, and cross-border investments with confidence.</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-spec">Small / 13px / 500</div>
+        <div style="font-size:13px; font-weight:500; color:var(--gray);">LAST UPDATED: JUNE 2025 · REGISTERED IN GERMANY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section id="logo">
+  <div class="container">
+    <div class="section-label">04 — Logo</div>
+    <h2 class="section-title">Logo Usage</h2>
+    <p class="section-desc">The FinoMind logo consists of the wordmark, a globe replacing the letter "o" in "Fino", and a speech-bubble frame — symbolising global reach and open conversation about money. Always maintain clear space equal to the height of the "F" around all sides.</p>
+
+    <div class="logo-grid" style="margin-bottom:40px;">
+      <div class="logo-box light">
+        <!-- Light background logo recreation -->
+        <svg width="260" height="80" viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="62" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#00AEEF">Fin</text>
+          <circle cx="148" cy="36" r="22" fill="#007B9E"/>
+          <ellipse cx="148" cy="36" rx="10" ry="22" fill="#1A5276" opacity=".6"/>
+          <line x1="126" y1="36" x2="170" y2="36" stroke="#4A6274" stroke-width="1.5" opacity=".5"/>
+          <text x="163" y="62" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#1A5276">Mind</text>
+        </svg>
+        <div class="logo-label">Primary — Light Background</div>
+      </div>
+      <div class="logo-box dark">
+        <svg width="260" height="80" viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="62" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#00AEEF">Fin</text>
+          <circle cx="148" cy="36" r="22" fill="#007B9E"/>
+          <ellipse cx="148" cy="36" rx="10" ry="22" fill="#1A5276" opacity=".8"/>
+          <line x1="126" y1="36" x2="170" y2="36" stroke="white" stroke-width="1.5" opacity=".4"/>
+          <text x="163" y="62" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#ffffff">Mind</text>
+        </svg>
+        <div class="logo-label">Reversed — Dark Background</div>
+      </div>
+      <div class="logo-box mid">
+        <!-- Monochrome version -->
+        <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="48" font-family="Inter, sans-serif" font-size="52" font-weight="800" fill="#1A5276">FinoMind</text>
+        </svg>
+        <div class="logo-label">Monochrome (Print / Fax)</div>
+      </div>
+      <div class="logo-box photo">
+        <svg width="260" height="80" viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="62" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#ffffff">Fin</text>
+          <circle cx="148" cy="36" r="22" fill="#00AEEF" opacity=".9"/>
+          <ellipse cx="148" cy="36" rx="10" ry="22" fill="#1A5276" opacity=".5"/>
+          <line x1="126" y1="36" x2="170" y2="36" stroke="white" stroke-width="1.5" opacity=".5"/>
+          <text x="163" y="62" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#ffffff">Mind</text>
+        </svg>
+        <div class="logo-label">On Photography</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:32px; font-size:13px; font-weight:700; color:var(--dark-teal); letter-spacing:.05em; text-transform:uppercase;">Logo Misuse — Never Do This</div>
+    <div class="misuse-grid">
+      <div class="misuse-item">
+        <div class="x">🚫</div>
+        <p>Stretch or distort the logo</p>
+      </div>
+      <div class="misuse-item">
+        <div class="x">🚫</div>
+        <p>Use on a low-contrast background</p>
+      </div>
+      <div class="misuse-item">
+        <div class="x">🚫</div>
+        <p>Change the typeface of the wordmark</p>
+      </div>
+      <div class="misuse-item">
+        <div class="x">🚫</div>
+        <p>Apply drop shadows or filters</p>
+      </div>
+      <div class="misuse-item">
+        <div class="x">🚫</div>
+        <p>Recolour with off-brand colours</p>
+      </div>
+      <div class="misuse-item">
+        <div class="x">🚫</div>
+        <p>Place the logo below the tagline</p>
+      </div>
+    </div>
+
+    <div style="margin-top:36px; background:var(--white); border-radius:14px; padding:24px 28px; border:1px solid var(--border);">
+      <div style="font-weight:700; font-size:13px; color:var(--dark-teal); margin-bottom:12px;">Minimum Size</div>
+      <p style="font-size:14px; color:var(--slate);">Full logo: <strong>120px / 32mm</strong> wide minimum. Icon-only globe mark: <strong>24px / 8mm</strong> minimum. Always provide SVG source files for digital and print.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section id="components">
+  <div class="container">
+    <div class="section-label">05 — UI Components</div>
+    <h2 class="section-title">Design Components</h2>
+    <p class="section-desc">All digital touchpoints — website, app, emails — use these standardised components. Consistency builds trust, especially in financial services.</p>
+
+    <div style="font-weight:700;font-size:13px;color:var(--dark-teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px;">Buttons</div>
+    <div class="component-row" style="margin-bottom:40px;">
+      <button class="btn-primary">Book a Consultation</button>
+      <button class="btn-secondary">Learn More</button>
+      <button class="btn-ghost">Download PDF</button>
+    </div>
+
+    <div style="font-weight:700;font-size:13px;color:var(--dark-teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px;">Tags & Badges</div>
+    <div class="component-row" style="margin-bottom:40px;">
+      <span class="tag tag-cyan">Pension Planning</span>
+      <span class="tag tag-cyan">Tax Consulting</span>
+      <span class="tag tag-dark">Germany</span>
+      <span class="tag tag-amber">New Service</span>
+    </div>
+
+    <div style="font-weight:700;font-size:13px;color:var(--dark-teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px;">Form Inputs</div>
+    <div class="component-row" style="margin-bottom:40px;">
+      <input class="input-demo" type="text" placeholder="Your full name"/>
+      <input class="input-demo" type="email" placeholder="email@example.com"/>
+    </div>
+
+    <div style="font-weight:700;font-size:13px;color:var(--dark-teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px;">Content Card</div>
+    <div class="component-row" style="margin-bottom:40px; align-items:flex-start;">
+      <div class="card-demo">
+        <div class="card-badge"><span class="tag tag-cyan">Tax Filing</span></div>
+        <h4>German Tax Return for Expats</h4>
+        <p>We handle your Steuererklärung end-to-end — including foreign income, double taxation treaties, and NRI status considerations.</p>
+        <button class="btn-primary" style="width:100%; font-size:13px;">Get Started</button>
+      </div>
+    </div>
+
+    <div style="font-weight:700;font-size:13px;color:var(--dark-teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px;">Spacing Scale</div>
+    <table class="spacing-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>px Value</th>
+          <th>Use</th>
+          <th>Visual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>space-1</code></td><td>4px</td><td>Icon padding, chip gap</td><td><div class="spacer-bar" style="width:4px;"></div></td></tr>
+        <tr><td><code>space-2</code></td><td>8px</td><td>Inline element spacing</td><td><div class="spacer-bar" style="width:8px;"></div></td></tr>
+        <tr><td><code>space-3</code></td><td>16px</td><td>Component internal padding</td><td><div class="spacer-bar" style="width:16px;"></div></td></tr>
+        <tr><td><code>space-4</code></td><td>24px</td><td>Card padding, field gap</td><td><div class="spacer-bar" style="width:24px;"></div></td></tr>
+        <tr><td><code>space-5</code></td><td>40px</td><td>Section internal padding</td><td><div class="spacer-bar" style="width:40px;"></div></td></tr>
+        <tr><td><code>space-6</code></td><td>72px</td><td>Section vertical rhythm</td><td><div class="spacer-bar" style="width:72px;"></div></td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:36px; background:var(--white); border-radius:14px; padding:24px 28px; border:1px solid var(--border);">
+      <div style="font-weight:700;font-size:13px;color:var(--dark-teal);margin-bottom:12px;">Border Radius</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;">
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--cyan);border-radius:4px;margin:0 auto 8px;"></div>
+          <div style="font-size:11px;color:var(--gray);">4px · Chip</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--cyan);border-radius:8px;margin:0 auto 8px;"></div>
+          <div style="font-size:11px;color:var(--gray);">8px · Button</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--cyan);border-radius:14px;margin:0 auto 8px;"></div>
+          <div style="font-size:11px;color:var(--gray);">14px · Card</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--cyan);border-radius:24px;margin:0 auto 8px;"></div>
+          <div style="font-size:11px;color:var(--gray);">24px · Modal</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:48px;height:48px;background:var(--cyan);border-radius:999px;margin:0 auto 8px;"></div>
+          <div style="font-size:11px;color:var(--gray);">999px · Pill / Avatar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE & TONE -->
+<section id="voice">
+  <div class="container">
+    <div class="section-label">06 — Voice & Tone</div>
+    <h2 class="section-title">How FinoMind Speaks</h2>
+    <p class="section-desc">Our audience has navigated immigration, language barriers, and complex bureaucracy. They deserve clear, respectful communication that treats them as the intelligent adults they are — never condescending, never corporate-cold.</p>
+
+    <div class="voice-cards">
+      <div class="voice-card">
+        <div class="icon">🔍</div>
+        <h4>Clear, not simplistic</h4>
+        <p>Break down financial complexity without dumbing it down. Use plain language and explain terms when they first appear.</p>
+        <div class="example">"Your Rentenversicherung contributions build your state pension entitlement — here's exactly how much you're accruing."</div>
+      </div>
+      <div class="voice-card">
+        <div class="icon">🤲</div>
+        <h4>Warm, not casual</h4>
+        <p>We are a trusted friend who also happens to be a licensed expert. Professional but never stiff or distant.</p>
+        <div class="example">"Navigating taxes in a new country isn't easy — we've helped hundreds of Indians in Germany do exactly this."</div>
+      </div>
+      <div class="voice-card">
+        <div class="icon">⚡</div>
+        <h4>Proactive, not pushy</h4>
+        <p>We point out things clients haven't thought of. We never apply pressure or use scarcity tactics.</p>
+        <div class="example">"Before you file, there's one deduction most new expats miss — let us check your eligibility."</div>
+      </div>
+      <div class="voice-card">
+        <div class="icon">🌏</div>
+        <h4>Culturally aware</h4>
+        <p>Reference shared experiences where relevant: remittances, NRI investments, families back home, long-term Germany residency planning.</p>
+        <div class="example">"Sending money home? We can help structure this tax-efficiently for both Germany and India."</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <div class="do-dont">
+        <div class="do-box">
+          <div class="badge">✓ SAY THIS</div>
+          <ul>
+            <li>We'll walk you through each step.</li>
+            <li>Here's what this means for you.</li>
+            <li>You're entitled to claim this.</li>
+            <li>Book a free 30-minute call.</li>
+            <li>Your money, your decision.</li>
+          </ul>
+        </div>
+        <div class="dont-box">
+          <div class="badge">✕ AVOID THIS</div>
+          <ul>
+            <li>Don't miss this limited offer!</li>
+            <li>As per the applicable legislation…</li>
+            <li>We are pleased to offer synergistic…</li>
+            <li>Act now before it's too late!</li>
+            <li>Our proprietary algorithm guarantees…</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--white); border-radius:14px; padding:28px 32px; border:1px solid var(--border); margin-top:8px;">
+      <div style="font-weight:700;font-size:13px;color:var(--dark-teal);margin-bottom:16px;">Language Guidance</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:14px;color:var(--slate);">
+        <div>
+          <div style="font-weight:600;color:var(--charcoal);margin-bottom:6px;">Primary language</div>
+          English — clear, international English accessible to non-native speakers. Avoid idioms that don't translate.
+        </div>
+        <div>
+          <div style="font-weight:600;color:var(--charcoal);margin-bottom:6px;">Secondary language</div>
+          German — for legal, regulatory, and SEO content. Always pair German terms with English explanations on first use.
+        </div>
+        <div>
+          <div style="font-weight:600;color:var(--charcoal);margin-bottom:6px;">Hindi / vernacular</div>
+          Use sparingly in social content or community campaigns for warmth, never for legal or formal communication.
+        </div>
+        <div>
+          <div style="font-weight:600;color:var(--charcoal);margin-bottom:6px;">Numbers & currency</div>
+          Always use €/EUR for Germany context. Show INR conversions in parentheses where helpful for the audience.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGERY -->
+<section id="imagery">
+  <div class="container">
+    <div class="section-label">07 — Photography & Imagery</div>
+    <h2 class="section-title">Visual Direction</h2>
+    <p class="section-desc">Photography should feel real and aspirational — not stock-photo generic. Show the actual lives of our clients: South Asian professionals in European cities, families planning their future, confident people at work.</p>
+
+    <div class="do-dont" style="margin-bottom:32px;">
+      <div class="do-box">
+        <div class="badge">✓ IDEAL IMAGES</div>
+        <ul>
+          <li>South Asian professionals in modern European office settings</li>
+          <li>Families in German cities (Frankfurt, Munich, Berlin) environments</li>
+          <li>Candid, natural moments — not posed smiles at cameras</li>
+          <li>Warm, natural light. Colours that complement the teal palette</li>
+          <li>Technology: laptops, phones — modern financial life</li>
+          <li>Architectural details of Germany (buildings, streets)</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="badge">✕ AVOID</div>
+        <ul>
+          <li>Generic "handshake" or "suited businessman" stock images</li>
+          <li>Images with no cultural connection to our audience</li>
+          <li>Oversaturated, heavy filter edits</li>
+          <li>Exclusively white European subjects in all marketing</li>
+          <li>Images that make finance feel intimidating or exclusive</li>
+          <li>Clipart, cartoons, or AI-generated faces</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border-radius:16px;padding:32px;border:1px solid var(--border);">
+      <div style="font-weight:700;font-size:13px;color:var(--dark-teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:20px;">Illustration Style</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:20px;">When illustrations are needed (explainer graphics, icons, infographics), follow these principles:</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+        <div style="padding:16px;background:var(--off-white);border-radius:10px;font-size:13px;color:var(--charcoal);">
+          <div style="font-weight:700;margin-bottom:4px;">Colour palette</div>
+          Strictly from the FinoMind palette. No random accent colours.
+        </div>
+        <div style="padding:16px;background:var(--off-white);border-radius:10px;font-size:13px;color:var(--charcoal);">
+          <div style="font-weight:700;margin-bottom:4px;">Line weight</div>
+          Consistent 1.5–2px stroke. Clean, geometric forms. Avoid ornate or decorative complexity.
+        </div>
+        <div style="padding:16px;background:var(--off-white);border-radius:10px;font-size:13px;color:var(--charcoal);">
+          <div style="font-weight:700;margin-bottom:4px;">Iconography</div>
+          Use outline-style icons. Recommended: Phosphor Icons or Heroicons. Never mix styles.
+        </div>
+        <div style="padding:16px;background:var(--off-white);border-radius:10px;font-size:13px;color:var(--charcoal);">
+          <div style="font-weight:700;margin-bottom:4px;">Globe motif</div>
+          The globe from the logo can be used as a standalone graphic element in illustrations and backgrounds.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section id="audience">
+  <div class="container">
+    <div class="section-label">08 — Application</div>
+    <h2 class="section-title">Brand in Action</h2>
+    <p class="section-desc">How the brand should appear across key touchpoints — from the website and social media to printed materials and email communications.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:36px;">
+      <div style="background:var(--dark-teal);border-radius:16px;padding:32px;color:white;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:rgba(255,255,255,.55);text-transform:uppercase;margin-bottom:16px;">Website</div>
+        <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--cyan);margin-bottom:10px;">Dark authority + cyan accents</div>
+        <ul style="font-size:13px;color:rgba(255,255,255,.75);line-height:2;list-style:none;">
+          <li>→ Deep teal hero, white body sections</li>
+          <li>→ Playfair Display for hero headlines only</li>
+          <li>→ Inter 16px / 1.7 line-height for body</li>
+          <li>→ Cyan CTAs throughout</li>
+          <li>→ Generous whitespace, card-based layout</li>
+        </ul>
+      </div>
+      <div style="background:var(--white);border-radius:16px;padding:32px;border:1px solid var(--border);">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;margin-bottom:16px;">Social Media</div>
+        <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--dark-teal);margin-bottom:10px;">Teal backgrounds, bold data</div>
+        <ul style="font-size:13px;color:var(--slate);line-height:2;list-style:none;">
+          <li>→ Square (1:1) or 4:5 portrait format</li>
+          <li>→ Large stat or pull-quote as hero element</li>
+          <li>→ Always include the logo in bottom-right</li>
+          <li>→ LinkedIn: professional, data-driven posts</li>
+          <li>→ Instagram: lifestyle, tips, community moments</li>
+        </ul>
+      </div>
+      <div style="background:var(--light-cyan);border-radius:16px;padding:32px;border:1px solid var(--border);">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-bottom:16px;">Email</div>
+        <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--dark-teal);margin-bottom:10px;">Clean & scannable</div>
+        <ul style="font-size:13px;color:var(--slate);line-height:2;list-style:none;">
+          <li>→ White background, teal header band</li>
+          <li>→ Max 600px width</li>
+          <li>→ One primary CTA per email</li>
+          <li>→ Preheader text always present</li>
+          <li>→ Footer in dark teal with unsubscribe link</li>
+        </ul>
+      </div>
+      <div style="background:var(--charcoal);border-radius:16px;padding:32px;color:white;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:16px;">Print / PDF Reports</div>
+        <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--cyan);margin-bottom:10px;">Structured & credible</div>
+        <ul style="font-size:13px;color:rgba(255,255,255,.75);line-height:2;list-style:none;">
+          <li>→ A4 portrait, 20mm margins</li>
+          <li>→ Teal header band with logo</li>
+          <li>→ Inter for all body copy, 10pt minimum</li>
+          <li>→ Tables in Cloud Cyan (#E0F7FC) fills</li>
+          <li>→ Page numbers in footer, always</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--dark-teal),var(--teal));border-radius:20px;padding:48px;text-align:center;color:white;">
+      <div style="font-family:var(--font-display);font-size:32px;font-weight:700;margin-bottom:12px;">Smart Wealth. Clear Direction.</div>
+      <div style="font-size:16px;color:rgba(255,255,255,.8);max-width:480px;margin:0 auto 28px;line-height:1.7;">Every design decision, every word, every pixel should reinforce that FinoMind makes complex financial life in Germany feel manageable and trustworthy.</div>
+      <div style="display:inline-flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+        <span style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;">Questions? hello@finomind.de</span>
+        <span style="background:var(--cyan);border-radius:8px;padding:8px 20px;font-size:13px;font-weight:600;">v1.0 — June 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>FinoMind Brand Guidelines v1.0</strong><br/>
+  Confidential — For internal use and approved partners only.<br/>
+  For questions about brand usage, contact the FinoMind marketing team.
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Colour copied to clipboard ✓</div>
+
+<script>
+function copyColor(hex) {
+  navigator.clipboard.writeText(hex).catch(() => {});
+  const t = document.getElementById('toast');
+  t.textContent = hex + ' copied to clipboard ✓';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+</script>
+
+</body>
+</html>
