@@ -1,79 +1,125 @@
 /* ═══════════════════════════════════════════════════════════
    FinoMind — Preloader (preloader.js)
-   Canvas-based frame sequence preloader. Plays once per session.
-   Seamless infinite loop during load, clean finish-on-complete once loaded.
+   Canvas-based frame-sequence preloader. Plays once per session.
+   Fully responsive: cover-scales across mobile, tablet, laptop, desktop.
+   Uses devicePixelRatio for crisp HiDPI / Retina rendering.
    ═══════════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  console.log('[Preloader] Initialization started.');
+  /* ── Config ── */
+  const PRELOADER_KEY  = 'finomind_preloader_seen';
+  const FRAME_DIR      = 'ezgif-814ed8a15dbbd723-jpg';
+  const TOTAL_FRAMES   = 240;
+  const FRAME_STEP     = 2;   // play every 2nd frame → 120 frames @ 24 fps
+  const FPS            = 24;
+  /* Native resolution of the source frames */
+  const SRC_W          = 1920;
+  const SRC_H          = 1080;
 
-  const PRELOADER_KEY = 'finomind_preloader_seen';
-  const FRAME_DIR = 'ezgif-814ed8a15dbbd723-jpg';
-  const TOTAL_FRAMES = 240;
-  const FRAME_STEP = 2; // Play every 2nd frame (120 frames total) for smooth 24fps playback
-  const FPS = 24;
-
+  /* ── DOM references ── */
   const preloader = document.getElementById('fm-preloader');
-  const canvas = document.getElementById('fm-preloader-canvas');
+  const canvas    = document.getElementById('fm-preloader-canvas');
 
-  // Skip preloader if already seen in this session
+  /* ── Skip if already seen this session ── */
   if (sessionStorage.getItem(PRELOADER_KEY)) {
-    console.log('[Preloader] Already seen in this session. Skipping.');
-    if (preloader) {
-      preloader.remove();
-    }
+    if (preloader) preloader.remove();
     document.body.classList.remove('fm-preloader-active');
     return;
   }
 
-  // Prevent scrolling while preloader is active
-  document.body.classList.add('fm-preloader-active');
-
+  /* ── Guard ── */
   if (!canvas || !preloader) return;
 
-  const ctx = canvas.getContext('2d');
-  
-  // Set canvas coordinate system to match source frame size (1920x1080)
-  canvas.width = 1920;
-  canvas.height = 1080;
+  document.body.classList.add('fm-preloader-active');
 
-  // Build the list of frames to use
+  const ctx = canvas.getContext('2d');
+
+  /* ──────────────────────────────────────────────────────────
+     RESPONSIVE CANVAS SIZING
+     Sets the canvas *pixel buffer* to match the physical viewport
+     pixels (accounting for devicePixelRatio for HiDPI sharpness).
+     The CSS keeps the canvas element at width/height 100% of the
+     overlay, so the element size is always correct — we only need
+     to match the buffer.
+  ────────────────────────────────────────────────────────── */
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    const w   = window.innerWidth;
+    const h   = window.innerHeight;
+    canvas.width  = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    /* Scale the context once so all draw calls use CSS-pixel coordinates */
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     COVER-SCALE DRAW
+     Replicates `object-fit: cover` for canvas:
+       • Scale the source image so it fills the canvas completely
+         (no letter-boxing / pillar-boxing)
+       • Keep the source aspect ratio
+       • Centre the crop within the viewport
+  ────────────────────────────────────────────────────────── */
+  function drawCover(img) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    const scale = Math.max(vw / SRC_W, vh / SRC_H);
+
+    const scaledW = SRC_W * scale;
+    const scaledH = SRC_H * scale;
+
+    /* Offset to centre the scaled image */
+    const offsetX = (vw - scaledW) / 2;
+    const offsetY = (vh - scaledH) / 2;
+
+    ctx.clearRect(0, 0, vw, vh);
+    ctx.drawImage(img, offsetX, offsetY, scaledW, scaledH);
+  }
+
+  /* ── Initial sizing ── */
+  resizeCanvas();
+
+  /* ── Resize listener (orientation change / window resize) ── */
+  let resizeTimer = null;
+  window.addEventListener('resize', function () {
+    /* Debounce to avoid thrashing on rapid resize events */
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resizeCanvas, 50);
+  });
+
+  /* ── Build frame list ── */
   const frameIndices = [];
   for (let i = 1; i <= TOTAL_FRAMES; i += FRAME_STEP) {
     frameIndices.push(i);
   }
-  
   const totalPlayFrames = frameIndices.length;
   const images = new Array(totalPlayFrames);
-  
-  let loadedCount = 0;
+
+  let loadedCount     = 0;
   let hasStartedPlaying = false;
-  let isFinished = false;
-  let pageLoaded = false;
+  let isFinished      = false;
+  let pageLoaded      = false;
 
   function pad(n) {
     return String(n).padStart(3, '0');
   }
 
-  // Preload frames progressively
-  console.log('[Preloader] Preloading 120 frames...');
+  /* ── Preload frames progressively ── */
   frameIndices.forEach(function (frameNum, index) {
     const img = new Image();
     img.onload = function () {
       images[index] = img;
       loadedCount++;
-      // Start animation loop early (buffer of 15 frames) to feel instant
       if (loadedCount >= Math.min(15, totalPlayFrames) && !hasStartedPlaying) {
         hasStartedPlaying = true;
-        console.log('[Preloader] Buffer loaded. Starting animation loop.');
         startAnimation();
       }
     };
     img.onerror = function () {
       loadedCount++;
-      // Ensure we don't block on load failures
       if (loadedCount >= Math.min(15, totalPlayFrames) && !hasStartedPlaying) {
         hasStartedPlaying = true;
         startAnimation();
@@ -82,22 +128,21 @@
     img.src = FRAME_DIR + '/ezgif-frame-' + pad(frameNum) + '.jpg';
   });
 
-  // Track window load state
+  /* ── Track page-load state ── */
   window.addEventListener('load', function () {
-    console.log('[Preloader] Window load event fired.');
     pageLoaded = true;
   });
 
-  // Safety fallback: if page assets take too long, consider page loaded in 5 seconds
+  /* Safety fallback: treat page as loaded after 5 s */
   setTimeout(function () {
-    console.log('[Preloader] Safety pageLoaded fallback triggered.');
     pageLoaded = true;
   }, 5000);
 
+  /* ── Animation loop ── */
   function startAnimation() {
     let currentFrame = 0;
-    const interval = 1000 / FPS;
-    let lastTime = performance.now();
+    const interval  = 1000 / FPS;
+    let lastTime     = performance.now();
 
     function draw(now) {
       if (isFinished) return;
@@ -106,24 +151,17 @@
       if (elapsed >= interval) {
         lastTime = now - (elapsed % interval);
 
-        // Check if we reached the last frame
         if (currentFrame >= totalPlayFrames) {
-          // If page has loaded, finish the preloader. Otherwise loop back to frame 0.
           if (pageLoaded || document.readyState === 'complete') {
-            console.log('[Preloader] Playback loop finished and page is ready. Exiting.');
             finishPreloader();
             return;
           } else {
-            console.log('[Preloader] Loop finished but page not loaded yet. Looping animation.');
-            currentFrame = 0;
+            currentFrame = 0;   /* loop until page ready */
           }
         }
 
         const img = images[currentFrame];
-        if (img) {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        }
+        if (img) drawCover(img);
         currentFrame++;
       }
       requestAnimationFrame(draw);
@@ -131,20 +169,20 @@
     requestAnimationFrame(draw);
   }
 
+  /* ── Finish & fade-out ── */
   function finishPreloader() {
     if (isFinished) return;
     isFinished = true;
 
     sessionStorage.setItem(PRELOADER_KEY, 'true');
-    console.log('[Preloader] Fading out.');
 
     preloader.classList.add('hidden');
     document.body.classList.remove('fm-preloader-active');
 
-    // Remove preloader element from DOM once opacity transition completes (600ms)
+    /* Remove from DOM after CSS opacity transition completes */
     setTimeout(function () {
-      console.log('[Preloader] Removing element from DOM.');
       preloader.remove();
-    }, 600);
+    }, 650);
   }
+
 })();

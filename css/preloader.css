@@ -1,50 +1,103 @@
 /* ═══════════════════════════════════════════════════════════
    FinoMind — Preloader (preloader.css)
-   Full-screen minimal dark preloader with edge-to-edge canvas animation.
+   Full-screen responsive preloader with cover-scaled canvas animation.
+   Fully responsive: mobile, tablet, laptop, desktop.
    ═══════════════════════════════════════════════════════════ */
 
+/* ── Overlay container: always fills 100% of the viewport ── */
 .fm-preloader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;                        /* shorthand: top/right/bottom/left = 0 */
+  width: 100%;
+  height: 100%;
+  /* Use dvh where supported for accurate mobile browser chrome */
+  height: 100dvh;
   z-index: 999999;
-  background: #0a1628; /* Fallback dark navy */
-  background: var(--navy); 
+  background: #0a1628;             /* Fallback navy — matches --navy token */
+  background: var(--navy, #0a1628);
   margin: 0;
   padding: 0;
   border: none;
   overflow: hidden;
-  display: block; /* Block layout to let canvas fill natively */
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
-  transition: opacity 0.6s var(--ease-out), visibility 0.6s;
+  /* Flex-center the canvas so it never shifts off-axis */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fade-out transition */
+  transition:
+    opacity  0.6s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+    visibility 0.6s;
+  opacity: 1;
+  visibility: visible;
   pointer-events: all;
   user-select: none;
+  -webkit-user-select: none;
+  /* Prevent tap-highlight flicker on iOS */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
 }
 
+/* ── Hidden / fade-out state ── */
 .fm-preloader.hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-/* True full-screen background canvas animation */
+/* ── Canvas: fills the overlay and is resized via JS for cover behaviour ──
+   NOTE: object-fit does NOT apply to <canvas>. The JS layer handles
+   cover-scaling by computing drawImage source rects.
+   We still set width/height 100% so the element occupies all space;
+   the actual pixel buffer is set dynamically in JS.
+── */
 .fm-preloader-canvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Stretches and scales to cover the viewport entirely like a cinematic video */
   border: none;
   margin: 0;
   padding: 0;
   display: block;
+  /* Crisp rendering on HiDPI; JS sets actual pixel dimensions */
+  image-rendering: auto;
 }
 
-/* Body freeze when preloader is active */
+/* ── Body freeze when preloader is active ──
+   overflow: hidden prevents scroll;
+   height / max-height prevent iOS bounce scrolling showing body content.
+── */
 body.fm-preloader-active {
   overflow: hidden !important;
-  height: 100vh !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  /* Prevent pull-to-refresh on Android/iOS */
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+/* ── Responsive overrides ── */
+
+/* Mobile portrait — ensure no white flashes on very small screens */
+@media (max-width: 480px) {
+  .fm-preloader {
+    background: #0a1628;
+    background: var(--navy, #0a1628);
+  }
+}
+
+/* Tablet & below — give the transition a tiny bit more breathing room */
+@media (max-width: 768px) {
+  .fm-preloader {
+    transition:
+      opacity  0.5s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+      visibility 0.5s;
+  }
+}
+
+/* Reduced motion preference — skip the fade for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fm-preloader {
+    transition: none;
+  }
 }
