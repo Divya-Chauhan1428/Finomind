@@ -13,17 +13,17 @@
   display: flex;
   align-items: center;
   padding: 0 var(--container-pad);
-  background: rgba(10, 22, 40, 0.85);
+  background: rgba(247, 250, 251, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(0, 174, 239, 0.10);
   transition: background var(--duration-fast) ease,
               box-shadow var(--duration-fast) ease;
 }
 
 .navbar.scrolled {
-  background: rgba(10, 22, 40, 0.95);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(247, 250, 251, 0.97);
+  box-shadow: 0 4px 24px rgba(0, 123, 158, 0.10);
 }
 
 .navbar-inner {
@@ -60,7 +60,7 @@
 }
 
 .nav-logo .mind {
-  color: var(--white);
+  color: #1A5276;
 }
 
 /* ── Nav Links ── */
@@ -73,7 +73,7 @@
 .nav-link {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
+  color: #4A6274;
   padding: 8px 16px;
   border-radius: var(--radius-btn);
   transition: color var(--duration-fast) ease,
@@ -83,8 +83,8 @@
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.06);
+  color: #1A5276;
+  background: rgba(0, 174, 239, 0.06);
 }
 
 /* ── CTA Button ── */
@@ -120,7 +120,7 @@
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--white);
+  background: #1A5276;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -151,10 +151,10 @@
     align-items: flex-start;
     padding: 100px 32px 40px;
     gap: 4px;
-    background: rgba(10, 22, 40, 0.97);
+    background: rgba(247, 250, 251, 0.98);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 1px solid rgba(0, 174, 239, 0.12);
     transition: right 0.4s var(--ease-out);
     overflow-y: auto;
   }

@@ -27,7 +27,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/preloader.css" />
+  <link rel="stylesheet" href="css/preloader.css?v=3" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/stats.css" />
@@ -81,58 +81,157 @@
 
 
   <!-- ════════════════════════════════════════════════════════
-     HERO SECTION
+     HERO SECTION — v2 Split Layout (mockup-inspired)
      ════════════════════════════════════════════════════════ -->
-  <section class="hero" id="hero">
-    <!-- Hero Background Image & Gradient Overlay -->
-    <div class="hero-bg-container">
-      <img src="Untitled design (5).png" alt="FinoMind advisors helping clients with cross-border financial planning" class="hero-bg-img" width="1535" height="1024" loading="eager" />
-      <div class="hero-bg-overlay"></div>
-    </div>
+  <section class="hero" id="hero" aria-label="Hero">
 
     <div class="hero-inner">
-      <!-- Left Content -->
+
+      <!-- ── LEFT: Text Content ── -->
       <div class="hero-content">
-        <div class="hero-card">
-          <span class="hero-eyebrow">Germany's Premier Financial Advisor for Indians</span>
 
-          <h1 class="hero-title">
-            Smart Wealth,<em>Clear Direction.</em>
-          </h1>
+        <!-- Social proof badge -->
+        <div class="hero-badge" aria-label="500+ clients served">
+          <div class="hero-badge-avatars" aria-hidden="true">
+            <span>RS</span>
+            <span>PM</span>
+            <span>AK</span>
+          </div>
+          <div class="hero-badge-dot" aria-hidden="true"></div>
+          <p class="hero-badge-text"><strong>500+ Indians in Europe</strong> trust FinoMind</p>
+        </div>
 
-          <p class="hero-subtitle">
-            Navigating German finances as an expat is complex. FinoMind simplifies pensions, taxes, and investments — in
-            clear English, for the Indian community in Europe.
-          </p>
+        <!-- Headline -->
+        <h1 class="hero-title">
+          <span class="hero-title-highlight">Your finances</span><em>are our priority.</em>
+        </h1>
 
-          <div class="hero-actions">
-            <a href="#cta" class="btn btn-primary">
-              Book a Free Consultation
-              <span class="btn-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 16l4-4-4-4" />
-                  <line x1="8" y1="12" x2="16" y2="12" />
-                </svg>
-              </span>
-            </a>
-            <a href="services.html" class="btn btn-outline">
-              Explore Services
-              <span class="btn-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-              </span>
-            </a>
+
+        <!-- Subheadline -->
+        <p class="hero-subtitle">
+          Whether you're a <strong>software engineer in Munich</strong>, a researcher in Berlin, or
+          a professional building roots in Europe — waiting to manage your finances could be too late.
+          Let FinoMind guide you.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-actions">
+          <a href="#cta" class="hero-btn-primary" id="hero-cta-primary">
+            Book a Free Call <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="services.html" class="hero-btn-ghost" id="hero-cta-ghost">
+            Explore Services <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Trust note -->
+        <p class="hero-trust-note">No credit card required · Free consultation · Cancel anytime</p>
+
+      </div>
+
+      <!-- ── RIGHT: Floating Dashboard Visual ── -->
+      <div class="hero-visual" aria-hidden="true">
+
+        <!-- Sparkle star decorations -->
+        <div class="sparkle sparkle-1">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+          </svg>
+        </div>
+        <div class="sparkle sparkle-2">
+          <svg width="14" height="14" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+          </svg>
+        </div>
+        <div class="sparkle sparkle-3">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+          </svg>
+        </div>
+        <div class="sparkle sparkle-4">
+          <svg width="12" height="12" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+          </svg>
+        </div>
+        <div class="sparkle sparkle-5">
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+          </svg>
+        </div>
+
+        <!-- Main dashboard card -->
+        <div class="hero-dashboard">
+          <!-- Donut chart (positioned absolutely at the top center) -->
+          <div class="hero-donut-wrap">
+            <div class="hero-donut"></div>
+          </div>
+
+          <!-- Transaction list -->
+          <div class="hero-tx-list">
+            <div class="hero-tx-item">
+              <div class="hero-tx-icon">↑</div>
+              <div class="hero-tx-info">
+                <div class="hero-tx-name">+€2,500.00</div>
+                <div class="hero-tx-sub">Real Estate Fund · Jun 2026</div>
+              </div>
+              <div class="hero-tx-amount positive">+€2,500</div>
+            </div>
+            <div class="hero-tx-item">
+              <div class="hero-tx-icon">↑</div>
+              <div class="hero-tx-info">
+                <div class="hero-tx-name">+€1,330.00</div>
+                <div class="hero-tx-sub">Riester Pension · Jun 2026</div>
+              </div>
+              <div class="hero-tx-amount positive">+€1,330</div>
+            </div>
+            <div class="hero-tx-item">
+              <div class="hero-tx-icon">↑</div>
+              <div class="hero-tx-info">
+                <div class="hero-tx-name">+€3,100.00</div>
+                <div class="hero-tx-sub">India Mutual · Jun 2026</div>
+              </div>
+              <div class="hero-tx-amount positive">+€3,100</div>
+            </div>
+            <div class="hero-tx-item">
+              <div class="hero-tx-icon">↑</div>
+              <div class="hero-tx-info">
+                <div class="hero-tx-name">+€250.00</div>
+                <div class="hero-tx-sub">Dividend · Jun 2026</div>
+              </div>
+              <div class="hero-tx-amount positive">+€250</div>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <!-- Right Spacer for Desktop Grid layout -->
-      <div class="hero-spacer" aria-hidden="true"></div>
-    </div>
+
+        <!-- Floating wealth card -->
+        <div class="hero-wealth-card">
+          <div class="hero-wealth-label">Cash in hand</div>
+          <div class="hero-wealth-value">€423,000.24</div>
+          <div class="hero-wealth-change">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+              <polyline points="17 6 23 6 23 12" />
+            </svg>
+            +20% over month
+          </div>
+        </div>
+
+        <!-- Floating bar chart card -->
+        <div class="hero-chart-card">
+          <div class="hero-chart-title">Growth</div>
+          <div class="hero-bars" role="img" aria-label="Monthly growth bar chart">
+            <div class="hero-bar"></div>
+            <div class="hero-bar"></div>
+            <div class="hero-bar"></div>
+            <div class="hero-bar"></div>
+            <div class="hero-bar"></div>
+            <div class="hero-bar"></div>
+          </div>
+        </div>
+
+      </div><!-- /hero-visual -->
+
+    </div><!-- /hero-inner -->
   </section>
 
 
@@ -506,7 +605,7 @@
 
 
   <!-- Scripts -->
-  <script src="js/preloader.js"></script>
+  <script src="js/preloader.js?v=3"></script>
   <script src="js/navbar.js" defer></script>
   <script src="js/animations.js" defer></script>
 
